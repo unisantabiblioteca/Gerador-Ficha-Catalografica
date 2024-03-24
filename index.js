@@ -63,9 +63,9 @@ function gravarValores(e) {
     valores.nomeAluno,
     valores.sobrenomeAluno,
   );
-  valores.responsabilidadeInvertido = inverterNomes(
-    valores.responsabilidadeNome,
-    valores.responsabilidadeSobrenome,
+  valores.nomeOrientadorInverido = inverterNomes(
+    valores.nomeOrientador,
+    valores.sobrenomeOrientador,
   );
 
   //verifica se o erro esta ativo, não deixa executar a funçaõ de gravar os valores no html
