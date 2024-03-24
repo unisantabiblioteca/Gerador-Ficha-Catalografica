@@ -215,6 +215,7 @@ input {
   outline: none;
   cursor: pointer;
   border-color: var(--cor-primaria);
+  transition: .3s;
 }
 
 .btn:hover {
@@ -234,6 +235,7 @@ input {
   border-color: var(--cor-primaria);
   opacity: 0.4;
   border: 2px solid black;
+  transition: .3s;
 }
 
 .btn-cancelar:hover {
