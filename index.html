@@ -21,7 +21,7 @@
       <h1 class="titulo">Gerador de fichas catalográficas</h1>
 
       <!-- Formulario -->
-      <form action="">
+      <form>
         <div class="wrap-input coluna1-2">
           <label for="nomeAluno">Nome do autor</label>
           <input id="nomeAluno" type="text" data-input="nomeAluno" required>
@@ -126,6 +126,7 @@
       <!-- Ficha Catalográficas-->
 
       <div class="wrap-ficha">
+        <!-- Inicio informação que sera gerada no PDF -->
         <div class="ficha">
           <div class="ficha-info">
             <div class="cover"></div>
@@ -135,8 +136,9 @@
             </div>
             <div class="ficha-info-item">
               <p><span data-value="nomeInvertidoAluno"></span>.</p>
-              <p class="text-indent"><span data-value="titulo"></span>.<span data-value="subtitulo"></span></p>
-              <p><span data-value="nomeAluno"></span> <span data-value="sobrenomeAluno"></span>.</p>
+              <p class="text-indent">
+                <span data-value="titulo"></span><span data-value="subtitulo"></span> / <span data-value="nomeAluno"></span> <span data-value="sobrenomeAluno"></span>.
+              </p>
               <p class="text-indent"><span data-value="ano"></span>.</p>
               <p class="text-indent"><span data-value="folhas"></span> f.</p>
             </div>
@@ -159,20 +161,24 @@
           </div>
           <p class="align-center elaborado">Elaborado pelo SIBi - Sistema Integrado de Bibliotecas - Unisanta</p>
         </div>
+        <!-- Fim informação que sera gerada no PDF -->
+
         <div class="wrap-btn">
           <button class="btn btn-gerar-ficha">Visualizar</button>
           <button class="btn btn-gerar-pdf">Gerar PDF</button>
           <button class="btn-cancelar">Cancelar</button>
           <p class="erro">ERRO: Deve preencher todos os campos obrigatorios</p>
         </div>
+
       </div>
     </div>
 
-
+    <p class="author">Desenvolvido por Gabriel Bragion de Micco</p>
   </div> <!-- fim da APP -->
 
-  <script src="html2pdf.bundle.min.js"></script>
-  <script src="index.js"></script>
+  <script src="html2pdf.bundle.min.js"></script> <!-- Biblioteca que gera o PDF -->
+  <script src="index.js"></script> <!-- Codigo que pega os valores do formulario e cria o item que se tornara o PDF -->
+
 </body>
 
 </html>
