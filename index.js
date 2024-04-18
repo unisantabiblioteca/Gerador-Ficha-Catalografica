@@ -18,6 +18,8 @@ const btnEnviar = document.querySelector(".btn-gerar-ficha"); // Seleciona o bot
 const btnGerarPDF = document.querySelector(".btn-gerar-pdf"); // Seleciona o botão Gerar PDF
 const btnCancelar = document.querySelector(".btn-cancelar"); // Seleciona o botão Gerar PDF
 
+let viewportWidth = window.innerWidth;
+
 //desabilita botoes para o usuario utilizar somente apos ter preenhido os campos do formulario
 btnGerarPDF.disabled = true;
 btnCancelar.disabled = true;
@@ -181,9 +183,22 @@ function handleInputCurso() {
   }
 }
 
+function debounce(func, timeout = 500){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+function saveInput(){
+  viewportWidth = window.innerWidth;
+}
+const handleResize = debounce(() => saveInput());
+
 //////////////////Event Listenres//////////////////
 
 btnEnviar.addEventListener("click", gravarValores);
 btnGerarPDF.addEventListener("click", gerarPDF);
 btnCancelar.addEventListener("click", cancelar);
 tipoTrabalho.addEventListener("change", handleInputCurso);
+window.addEventListener("resize", handleResize);
