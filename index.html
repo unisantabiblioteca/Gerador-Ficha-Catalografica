@@ -29,8 +29,9 @@
         <div class="wrap-input coluna2-5">
           <label for="sobrenomeAluno">Sobrenome do autor</label>
           <input id="sobrenomeAluno" type="text" data-input="sobrenomeAluno" required>
+          <div class="btn-adicionar-autor">Adicionar Autor +</div>
         </div>
-        <div class="wrap-input coluna1-5">
+        <div class="wrap-input coluna1-5 elementoReferencia">
           <label for="titulo">Titulo do trabalho</label>
           <input id="titulo" type="text" data-input="titulo" required>
         </div>
@@ -135,9 +136,9 @@
               <p><span data-value="codigo2"></span></p>
             </div>
             <div class="ficha-info-item">
-              <p><span data-value="nomeInvertidoAluno"></span>.</p>
-              <p class="text-indent">
-                <span data-value="titulo"></span><span data-value="subtitulo"></span> / <span data-value="nomeAluno"></span> <span data-value="sobrenomeAluno"></span>.
+              <p><span data-value="nomeInvertidoAluno"></span></p>
+              <p class="text-indent listaNomes">
+                <span data-value="titulo"></span><span data-value="subtitulo"></span> / <span data-value="nomeAluno"></span> <span data-value="sobrenomeAluno"></span><span data-value="nomeAluno2"></span> <span data-value="sobrenomeAluno2"></span><span data-value="nomeAluno3"></span> <span data-value="sobrenomeAluno3"></span><span data-value="nomeAluno4"></span> <span data-value="sobrenomeAluno4"></span><span data-value="nomeAluno5"></span> <span data-value="sobrenomeAluno5"></span>
               </p>
               <p class="text-indent"><span data-value="ano"></span>.</p>
               <p class="text-indent"><span data-value="folhas"></span> f.</p>
@@ -156,7 +157,9 @@
               <span><span id="4." data-value="assunto4"></span></span>
               <span><span id="5." data-value="assunto5"></span></span>
               <span><span id="6." data-value="assunto6"></span></span>
-              <span>I. <span data-value="nomeOrientadorInverido"></span></span>. II. <span data-value="titulo"></span>.</span>
+              <div class="listaRomana">
+                <span data-value="nomeOrientadorInverido"></span><span data-value="nomeInvertidoAluno2"></span><span data-value="nomeInvertidoAluno3"></span><span data-value="nomeInvertidoAluno4"></span><span data-value="nomeInvertidoAluno5"></span><span data-value="titulo"></span>
+              </div>
             </div>
           </div>
           <p class="align-center elaborado">Elaborado pelo SIBi - Sistema Integrado de Bibliotecas - Unisanta</p>
