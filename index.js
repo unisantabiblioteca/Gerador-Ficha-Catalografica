@@ -1,6 +1,6 @@
 //////////////////Variaveis//////////////////
 
-const inputs = document.querySelectorAll("[data-input]"); //Seleciona todos os inputs do formulario
+let inputs = document.querySelectorAll("[data-input]"); //Seleciona todos os inputs do formulario
 const infos = document.querySelectorAll("[data-value]"); // Seleciona todos os Spans do HTML que irão receber os valores dos inputs
 const cover = document.querySelector(".cover"); //elemento html que faz o quadrado da ficha ficar branco
 const instituicao = document.querySelector("#instituicao"); //seleciona o campo instituição para poder preencher automaticamente na linha abaixo
@@ -17,8 +17,14 @@ let valores = {}; // Objeto que sera usado para gravas os valores dos inputs
 const btnEnviar = document.querySelector(".btn-gerar-ficha"); // Seleciona o botão Gerar Ficha
 const btnGerarPDF = document.querySelector(".btn-gerar-pdf"); // Seleciona o botão Gerar PDF
 const btnCancelar = document.querySelector(".btn-cancelar"); // Seleciona o botão Gerar PDF
+let btnRemoverInput;
 
 let viewportWidth = window.innerWidth;
+
+const btnAdicionarAutor = document.querySelector(".btn-adicionar-autor");
+const form = document.querySelector("form");
+const listaRomana = document.querySelectorAll(".listaRomana span");
+const numeroRomanos = ["I", "II", "III", "IV", "V", "VI"];
 
 //desabilita botoes para o usuario utilizar somente apos ter preenhido os campos do formulario
 btnGerarPDF.disabled = true;
@@ -69,6 +75,22 @@ function gravarValores(e) {
     valores.nomeOrientador,
     valores.sobrenomeOrientador,
   );
+  valores.nomeInvertidoAluno2 = inverterNomes(
+    valores.nomeAluno2,
+    valores.sobrenomeAluno2,
+  );
+  valores.nomeInvertidoAluno3 = inverterNomes(
+    valores.nomeAluno3,
+    valores.sobrenomeAluno3,
+  );
+  valores.nomeInvertidoAluno4 = inverterNomes(
+    valores.nomeAluno4,
+    valores.sobrenomeAluno4,
+  );
+  valores.nomeInvertidoAluno5 = inverterNomes(
+    valores.nomeAluno5,
+    valores.sobrenomeAluno5,
+  );
 
   //verifica se o erro esta ativo, não deixa executar a funçaõ de gravar os valores no html
   if (!erro) {
@@ -79,7 +101,13 @@ function gravarValores(e) {
     btnCancelar.disabled = false;
 
     cover.style.display = "none";
-    registrarValoresHTML();
+
+    if (viewportWidth <= 1160) {
+      window.scrollTo(0, 0);
+      registrarValoresHTML();
+    } else {
+      registrarValoresHTML();
+    }
   }
 }
 
@@ -106,11 +134,44 @@ function registrarValoresHTML() {
         info.textContent = `Coorientador: ${valores[dataValue]}`;
       } else if (dataValue === "sobrenomeCoorientador") {
         info.textContent = ` ${valores[dataValue]}.`;
+      } else if (dataValue === "sobrenomeAluno2") {
+        info.textContent = ` ${valores[dataValue]}; `;
+      } else if (dataValue === "sobrenomeAluno3") {
+        info.textContent = ` ${valores[dataValue]}; `;
+      } else if (dataValue === "sobrenomeAluno4") {
+        info.textContent = ` ${valores[dataValue]}; `;
+      } else if (dataValue === "sobrenomeAluno5") {
+        info.textContent = ` ${valores[dataValue]};`;
       } else if (!info.id) {
         info.textContent = valores[dataValue]; // grava valores dos spans que nao tem ID
       }
     }
   });
+
+  const novaLista = [];
+
+  listaRomana.forEach((item) => {
+    if (item.textContent !== "") novaLista.push(item);
+  });
+
+  novaLista.forEach((item, index) => {
+    item.textContent = `${numeroRomanos[index]}. ${item.innerText}. `;
+  });
+
+  if (novaLista.length > 2) {
+    infos[6].innerText = `${infos[6].innerText}; `;
+  } else {
+    infos[6].innerText = `${infos[6].innerText}.`;
+  }
+
+  if (novaLista.length > 4) {
+    infos[2].innerText = `${infos[2].innerText}; et al.`;
+  } else {
+    infos[2].innerText = `${infos[2].innerText}.`;
+  }
+
+  const listaNomes = Array.from(document.querySelector(".listaNomes").children);
+  console.log(listaNomes.map((item) => item.textContent));
 }
 
 function gerarPDF() {
@@ -121,7 +182,7 @@ function gerarPDF() {
 
     //configurações
     const options = {
-      margin: [190, 10, 10, 10], // faz a informação ir para o final da pagina a4 do PDF, caso queira deixar no topo, alterar para: 10, 10, 10 ,10
+      margin: [180, 10, 10, 10], // faz a informação ir para o final da pagina a4 do PDF, caso queira deixar no topo, alterar para: 10, 10, 10 ,10
       filename: "ficha catalográfica.pdf",
       html2canvas: { scale: 3 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
@@ -170,6 +231,8 @@ function cancelar() {
   cover.style.display = "block";
   btnGerarPDF.disabled = true; //desabilita botoes
   btnCancelar.disabled = true;
+  const divsCriadas = document.querySelectorAll(".criado");
+  divsCriadas.forEach((div) => div.remove());
 }
 
 //função para lidar com a seleçãpo do tipo de curso (tcc,dissertação, etc)
@@ -183,17 +246,63 @@ function handleInputCurso() {
   }
 }
 
-function debounce(func, timeout = 500){
+function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {
     clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
   };
 }
-function saveInput(){
+function saveInput() {
   viewportWidth = window.innerWidth;
 }
 const handleResize = debounce(() => saveInput());
+
+let i = 2;
+function criarInput() {
+  if (i <= 5) {
+    const elementoReferencia = document.querySelector(".elementoReferencia");
+
+    const wrapInputNome = document.createElement("div");
+    wrapInputNome.classList.add("wrap-input", "coluna1-2", "criado");
+
+    const newInputNome = document.createElement("input");
+    newInputNome.required = true;
+    newInputNome.id = `nomeAluno${i}`;
+    newInputNome.type = "text";
+    newInputNome.dataset.input = `nomeAluno${i}`;
+
+    const labelNome = document.createElement("label");
+    labelNome.innerHTML = `<label for="nomeAluno${i}">Nome do autor ${i}</label>`;
+
+    const wrapInputSobrenome = document.createElement("div");
+    wrapInputSobrenome.classList.add("wrap-input", "coluna2-5", "criado");
+
+    const newInputSobrenome = document.createElement("input");
+    newInputSobrenome.required = true;
+    newInputSobrenome.id = `sobrenomeAluno${i}`;
+    newInputSobrenome.type = "text";
+    newInputSobrenome.dataset.input = `sobrenomeAluno${i}`;
+
+    const labelSobrenome = document.createElement("label");
+    labelSobrenome.innerHTML = `<label for="sobrenomeAluno${i}">Sobrenome do autor ${i}</label>`;
+
+    wrapInputNome.appendChild(labelNome);
+    wrapInputNome.appendChild(newInputNome);
+    wrapInputSobrenome.appendChild(labelSobrenome);
+    wrapInputSobrenome.appendChild(newInputSobrenome);
+
+    form.insertBefore(wrapInputNome, elementoReferencia);
+    form.insertBefore(wrapInputSobrenome, elementoReferencia);
+
+    i++;
+    inputs = document.querySelectorAll("[data-input]");
+  }
+}
+
+function eliminarInput() {}
 
 //////////////////Event Listenres//////////////////
 
@@ -201,4 +310,5 @@ btnEnviar.addEventListener("click", gravarValores);
 btnGerarPDF.addEventListener("click", gerarPDF);
 btnCancelar.addEventListener("click", cancelar);
 tipoTrabalho.addEventListener("change", handleInputCurso);
+btnAdicionarAutor.addEventListener("click", criarInput);
 window.addEventListener("resize", handleResize);
