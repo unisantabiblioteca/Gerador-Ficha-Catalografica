@@ -160,13 +160,9 @@ function registrarValoresHTML() {
 
   if (novaLista.length > 2) {
     infos[6].innerText = `${infos[6].innerText}; `;
-  } else {
-    infos[6].innerText = `${infos[6].innerText}.`;
-  }
-
-  if (novaLista.length > 4) {
     infos[2].innerText = `${infos[2].innerText}; et al.`;
   } else {
+    infos[6].innerText = `${infos[6].innerText}.`;
     infos[2].innerText = `${infos[2].innerText}.`;
   }
 
