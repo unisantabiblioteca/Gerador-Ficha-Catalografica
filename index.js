@@ -158,6 +158,15 @@ function registrarValoresHTML() {
     item.textContent = `${numeroRomanos[index]}. ${item.innerText}. `;
   });
 
+  const listaSobrenome = document.querySelectorAll(".listaSobrenome");
+  listaSobrenome.forEach((item) => {
+    if (item.textContent !== "") {
+      ultimoElemento = item;
+    }
+  });
+
+  ultimoElemento.innerText = ultimoElemento.innerText.replace(/.$/, '.')
+
   if (novaLista.length > 2) {
     infos[6].innerText = `${infos[6].innerText}; `;
     infos[2].innerText = `${infos[2].innerText}; et al.`;
