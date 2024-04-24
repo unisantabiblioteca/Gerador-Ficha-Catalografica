@@ -313,11 +313,13 @@ function criarInput() {
 }
 
 function eliminarInput() {
-  const inputsCriados = document.querySelectorAll(".criado")
-  inputsCriados[inputsCriados.length-1].remove()
-  inputsCriados[inputsCriados.length-2].remove()
-  i--
-  inputs = document.querySelectorAll("[data-input]");
+  if(i > 2){
+    const inputsCriados = document.querySelectorAll(".criado")
+    inputsCriados[inputsCriados.length-1].remove()
+    inputsCriados[inputsCriados.length-2].remove()
+    i--
+    inputs = document.querySelectorAll("[data-input]");
+  }
 }
 
 //////////////////Event Listenres//////////////////
