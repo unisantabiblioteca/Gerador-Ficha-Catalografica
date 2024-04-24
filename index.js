@@ -5,6 +5,7 @@ const infos = document.querySelectorAll("[data-value]"); // Seleciona todos os S
 const cover = document.querySelector(".cover"); //elemento html que faz o quadrado da ficha ficar branco
 const instituicao = document.querySelector("#instituicao"); //seleciona o campo instituição para poder preencher automaticamente na linha abaixo
 instituicao.value = "Universidade Santa Cecília";
+let ultimoElemento;
 
 const tipoTrabalho = document.querySelector("#tipoTrabalho"); //seleciona o as opções de tipo de trabalho (TCC, dissertação,etc)
 let resultadoSelecao; //variavel que vai ser usada para saber qual tipo de trabalho foi selecionado
@@ -17,11 +18,13 @@ let valores = {}; // Objeto que sera usado para gravas os valores dos inputs
 const btnEnviar = document.querySelector(".btn-gerar-ficha"); // Seleciona o botão Gerar Ficha
 const btnGerarPDF = document.querySelector(".btn-gerar-pdf"); // Seleciona o botão Gerar PDF
 const btnCancelar = document.querySelector(".btn-cancelar"); // Seleciona o botão Gerar PDF
-let btnRemoverInput;
+
 
 let viewportWidth = window.innerWidth;
 
 const btnAdicionarAutor = document.querySelector(".btn-adicionar-autor");
+const btnRemoverAutor = document.querySelector(".btn-remover-autor");
+
 const form = document.querySelector("form");
 const listaRomana = document.querySelectorAll(".listaRomana span");
 const numeroRomanos = ["I", "II", "III", "IV", "V", "VI"];
@@ -167,6 +170,7 @@ function registrarValoresHTML() {
 
   ultimoElemento.innerText = ultimoElemento.innerText.replace(/.$/, '.')
 
+
   if (novaLista.length > 2) {
     infos[6].innerText = `${infos[6].innerText}; `;
   } else {
@@ -177,7 +181,6 @@ function registrarValoresHTML() {
   } else {
     infos[2].innerText = `${infos[2].innerText}.`;
   }
-
 }
 
 function gerarPDF() {
@@ -239,6 +242,7 @@ function cancelar() {
   btnCancelar.disabled = true;
   const divsCriadas = document.querySelectorAll(".criado");
   divsCriadas.forEach((div) => div.remove());
+  inputs = document.querySelectorAll("[data-input]");
 }
 
 //função para lidar com a seleçãpo do tipo de curso (tcc,dissertação, etc)
@@ -308,7 +312,13 @@ function criarInput() {
   }
 }
 
-function eliminarInput() {}
+function eliminarInput() {
+  const inputsCriados = document.querySelectorAll(".criado")
+  inputsCriados[inputsCriados.length-1].remove()
+  inputsCriados[inputsCriados.length-2].remove()
+  i--
+  inputs = document.querySelectorAll("[data-input]");
+}
 
 //////////////////Event Listenres//////////////////
 
@@ -317,4 +327,5 @@ btnGerarPDF.addEventListener("click", gerarPDF);
 btnCancelar.addEventListener("click", cancelar);
 tipoTrabalho.addEventListener("change", handleInputCurso);
 btnAdicionarAutor.addEventListener("click", criarInput);
+btnRemoverAutor.addEventListener("click", eliminarInput)
 window.addEventListener("resize", handleResize);
