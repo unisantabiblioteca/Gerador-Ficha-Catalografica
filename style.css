@@ -159,20 +159,41 @@ input {
   border: 1px solid black;
 }
 
+.wrap-btn-autor{
+  align-self: flex-end;
+  display: flex;
+  gap: .5rem;
+}
+
 .btn-adicionar-autor{
-  width: 100px;
   font-size: 10px;
-  padding: .15rem;
+  padding: .15rem .5rem;
   background-color: var(--cor-primaria);
   color: white;
   text-align: center;
   border-radius: 4px;
   margin-top: 4px;
   cursor: pointer;
-  align-self: flex-end;
+  align-self: center;
+  transition: .3s;
 }
 .btn-adicionar-autor:hover{
   background-color: var(--cor-primaria-hover);
+}
+.btn-remover-autor{
+  font-size: 10px;
+  padding: .15rem .5rem;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 4px;
+  cursor: pointer;
+  border: 1px solid #000;
+  align-self: center;
+  opacity: .5;
+  transition: .3s;
+}
+.btn-remover-autor:hover{
+  opacity: 1;
 }
 
 .listaRomana{
