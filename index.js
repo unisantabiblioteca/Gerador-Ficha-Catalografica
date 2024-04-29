@@ -6,6 +6,7 @@ const cover = document.querySelector(".cover"); //elemento html que faz o quadra
 const instituicao = document.querySelector("#instituicao"); //seleciona o campo instituição para poder preencher automaticamente na linha abaixo
 instituicao.value = "Universidade Santa Cecília";
 let ultimoElemento;
+const listaSobrenome = document.querySelectorAll(".listaSobrenome");
 
 const tipoTrabalho = document.querySelector("#tipoTrabalho"); //seleciona o as opções de tipo de trabalho (TCC, dissertação,etc)
 let resultadoSelecao; //variavel que vai ser usada para saber qual tipo de trabalho foi selecionado
@@ -18,7 +19,6 @@ let valores = {}; // Objeto que sera usado para gravas os valores dos inputs
 const btnEnviar = document.querySelector(".btn-gerar-ficha"); // Seleciona o botão Gerar Ficha
 const btnGerarPDF = document.querySelector(".btn-gerar-pdf"); // Seleciona o botão Gerar PDF
 const btnCancelar = document.querySelector(".btn-cancelar"); // Seleciona o botão Gerar PDF
-
 
 let viewportWidth = window.innerWidth;
 
@@ -134,7 +134,7 @@ function registrarValoresHTML() {
           info.textContent = `Programa de pós-graduação em ${valores[dataValue]},`;
         }
       } else if (dataValue === "nomeCoorientador") {
-        info.textContent = `Coorientador: ${valores[dataValue]}`;
+        info.textContent = `Coorientador: ${valores.tituloCoorientador} ${valores[dataValue]}`;
       } else if (dataValue === "sobrenomeCoorientador") {
         info.textContent = ` ${valores[dataValue]}.`;
       } else if (dataValue === "sobrenomeAluno2") {
@@ -156,30 +156,35 @@ function registrarValoresHTML() {
   listaRomana.forEach((item) => {
     if (item.textContent !== "") novaLista.push(item);
   });
-
   novaLista.forEach((item, index) => {
     item.textContent = `${numeroRomanos[index]}. ${item.innerText}. `;
   });
 
-  const listaSobrenome = document.querySelectorAll(".listaSobrenome");
-  listaSobrenome.forEach((item) => {
-    if (item.textContent !== "") {
-      ultimoElemento = item;
+
+
+
+  if (listaSobrenome[0].textContent !== "") {
+    listaSobrenome.forEach((item) => {
+      if (item.textContent !== "") {
+        ultimoElemento = item;
+      }
+    });
+
+    ultimoElemento.innerText = ultimoElemento.innerText.replace(/.$/, ".");
+
+    if (novaLista.length > 2) {
+      infos[6].innerText = `${infos[6].innerText}; `;
+    } else {
+      infos[6].innerText = `${infos[6].innerText}.`;
     }
-  });
-
-  ultimoElemento.innerText = ultimoElemento.innerText.replace(/.$/, '.')
-
-
-  if (novaLista.length > 2) {
-    infos[6].innerText = `${infos[6].innerText}; `;
-  } else {
-    infos[6].innerText = `${infos[6].innerText}.`;
-  }
-  if (novaLista.length > 4) {
-    infos[2].innerText = `${infos[2].innerText}; et al.`;
-  } else {
+    if (novaLista.length > 4) {
+      infos[2].innerText = `${infos[2].innerText}; et al.`;
+    } else {
+      infos[2].innerText = `${infos[2].innerText}.`;
+    }
+  }else{
     infos[2].innerText = `${infos[2].innerText}.`;
+    infos[6].innerText = `${infos[6].innerText}.`;
   }
 }
 
@@ -313,11 +318,11 @@ function criarInput() {
 }
 
 function eliminarInput() {
-  if(i > 2){
-    const inputsCriados = document.querySelectorAll(".criado")
-    inputsCriados[inputsCriados.length-1].remove()
-    inputsCriados[inputsCriados.length-2].remove()
-    i--
+  if (i > 2) {
+    const inputsCriados = document.querySelectorAll(".criado");
+    inputsCriados[inputsCriados.length - 1].remove();
+    inputsCriados[inputsCriados.length - 2].remove();
+    i--;
     inputs = document.querySelectorAll("[data-input]");
   }
 }
@@ -329,5 +334,5 @@ btnGerarPDF.addEventListener("click", gerarPDF);
 btnCancelar.addEventListener("click", cancelar);
 tipoTrabalho.addEventListener("change", handleInputCurso);
 btnAdicionarAutor.addEventListener("click", criarInput);
-btnRemoverAutor.addEventListener("click", eliminarInput)
+btnRemoverAutor.addEventListener("click", eliminarInput);
 window.addEventListener("resize", handleResize);
