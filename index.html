@@ -76,19 +76,37 @@
           <label for="curso">Curso</label>
           <input id="curso" type="text" data-input="curso" required>
         </div>
-        <div class="wrap-input coluna1-2">
+        <div class="wrap-input coluna1-3">
           <label for="nomeOrientador">Nome do Orientador</label>
-          <input id="nomeOrientador" type="text" data-input="nomeOrientador" required>
+          <div class="wrap-orientador">
+            <select name="tituloOrientador" id="tituloOrientador" data-input="tituloOrientador">
+              <option value="">Grau:</option>
+              <option value="Dr.">Doutor</option>
+              <option value="Dra.">Doutora</option>
+              <option value="Me.">Mestre</option>
+              <option value="Ma.">Mestra</option>
+            </select>
+            <input id="nomeOrientador" type="text" data-input="nomeOrientador" required>
+          </div>
         </div>
-        <div class="wrap-input coluna2-5">
+        <div class="wrap-input coluna3-5">
           <label for="sobrenomeOrientador ">Sobrenome do orientador</label>
           <input id="sobrenomeOrientador" type="text" data-input="sobrenomeOrientador" required>
         </div>
-        <div class="wrap-input coluna1-2">
+        <div class="wrap-input coluna1-3">
           <label for="nomeCoorientador">Nome do Coorientador</label>
-          <input id="nomeCoorientador" type="text" data-input="nomeCoorientador">
+          <div class="wrap-orientador">
+            <select name="tituloCoorientador" id="tituloCoorientador" data-input="tituloCoorientador">
+              <option value="">Grau:</option>
+              <option value="Dr.">Doutor</option>
+              <option value="Dra.">Doutora</option>
+              <option value="Me.">Mestre</option>
+              <option value="Ma.">Mestra</option>
+            </select>
+            <input id="nomeCoorientador" type="text" data-input="nomeCoorientador">
+          </div>
         </div>
-        <div class="wrap-input coluna2-5">
+        <div class="wrap-input coluna3-5">
           <label for="sobrenomeCoorientador ">Sobrenome do Coorientador</label>
           <input id="sobrenomeCoorientador" type="text" data-input="sobrenomeCoorientador">
         </div>
@@ -147,7 +165,7 @@
               <p class="text-indent"><span data-value="folhas"></span> f.</p>
             </div>
             <div class="ficha-info-item">
-              <p class="text-indent">Orientador: <span data-value="nomeOrientador"></span> <span data-value="sobrenomeOrientador"></span>.</p>
+              <p class="text-indent">Orientador: <span data-value="tituloOrientador"></span> <span data-value="nomeOrientador"></span> <span data-value="sobrenomeOrientador"></span>.</p>
               <p class="text-indent"><span data-value="nomeCoorientador"></span> <span data-value="sobrenomeCoorientador"></span></p>
             </div>
             <div class="ficha-info-item">
