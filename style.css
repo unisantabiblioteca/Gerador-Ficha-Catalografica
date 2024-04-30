@@ -159,6 +159,20 @@ input {
   border: 1px solid black;
 }
 
+.wrap-orientador{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrap-orientador select{
+  font-size: 14px;
+  padding: 0;
+}
+
+.wrap-orientador input{
+  width: 150px;
+}
+
 .wrap-btn-autor{
   align-self: flex-end;
   display: flex;
@@ -176,6 +190,7 @@ input {
   cursor: pointer;
   align-self: center;
   transition: .3s;
+  user-select: none;
 }
 .btn-adicionar-autor:hover{
   background-color: var(--cor-primaria-hover);
@@ -191,6 +206,7 @@ input {
   align-self: center;
   opacity: .5;
   transition: .3s;
+  user-select: none;
 }
 .btn-remover-autor:hover{
   opacity: 1;
@@ -281,6 +297,7 @@ input {
   cursor: pointer;
   border-color: var(--cor-primaria);
   transition: .3s;
+  user-select: none;
 }
 
 .btn:hover {
@@ -301,6 +318,7 @@ input {
   opacity: 0.4;
   border: 2px solid black;
   transition: .3s;
+  user-select: none;
 }
 
 .btn-cancelar:hover {
