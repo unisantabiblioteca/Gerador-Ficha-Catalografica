@@ -76,6 +76,46 @@ header{
   font-size: 12px;
   opacity: .4;
 }
+.ajuda{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 90px;
+  height: 30px;
+  width: 30px;
+  border: 2px solid var(--cor-primaria) ;
+  border-radius: 50%;
+  color: var(--cor-primaria);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ajuda:hover{
+  background-color: var(--cor-primaria);
+  color: #F7F7F7;
+}
+[data-tooltip]:after {
+  display: none;
+  position: absolute;
+  top: -5px;
+  left: -310px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  content: attr(data-tooltip);
+  background-color: white;
+  color: black;
+  width: 300px;
+  z-index: 100;
+  font-weight: normal;
+  line-height: 24px;
+  border: 2px solid var(--cor-primaria);
+}
+
+[data-tooltip]:hover:after {
+  display: block;
+}
+
 
 /* FORMULARIO */
 
