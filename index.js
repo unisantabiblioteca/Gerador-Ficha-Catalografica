@@ -125,7 +125,7 @@ function registrarValoresHTML() {
         info.textContent = `${info.id} ${valores[dataValue]}.`; //Esse daqui corrige os campos assuntos, permitindo atraves do ID do html adiconar o numero do assunto e colocando um ponto no final da string
       } else if (dataValue === "subtitulo") {
         //corrige o campo subtitulo adicionando a / e o ponto final
-        info.textContent = ` : ${valores[dataValue]}`;
+        info.textContent = `: ${valores[dataValue]}`;
       } else if (dataValue === "curso") {
         //verificar qual tipo de curso foi selecionado (tcc, dissertação,etc), para depois escrever a frase correta
         if (resultadoSelecao === "TCC") {
