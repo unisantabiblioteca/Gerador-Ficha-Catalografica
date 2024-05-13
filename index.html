@@ -82,7 +82,7 @@
           <label for="nomeOrientador">Nome do Orientador</label>
           <div class="wrap-orientador">
             <select name="tituloOrientador" id="tituloOrientador" data-input="tituloOrientador">
-              <option value="">Grau:</option>
+              <option value=" ">Grau:</option>
               <option value="Dr.">Doutor</option>
               <option value="Dra.">Doutora</option>
               <option value="Me.">Mestre</option>
@@ -99,7 +99,7 @@
           <label for="nomeCoorientador">Nome do Coorientador</label>
           <div class="wrap-orientador">
             <select name="tituloCoorientador" id="tituloCoorientador" data-input="tituloCoorientador">
-              <option value="">Grau:</option>
+              <option value=" ">Grau:</option>
               <option value="Dr.">Doutor</option>
               <option value="Dra.">Doutora</option>
               <option value="Me.">Mestre</option>
@@ -193,6 +193,11 @@
           <button class="btn btn-gerar-ficha">Visualizar</button>
           <button class="btn btn-gerar-pdf">Gerar PDF</button>
           <button class="btn-cancelar">Cancelar</button>
+          <div class="wrap-range">
+            <button class="menos">-</button>
+            <div><span class="tamanho-fonte">14</span>px</div>
+            <button class="mais">+</button>
+          </div>
           <p class="erro">ERRO: Deve preencher todos os campos obrigatorios</p>
         </div>
 
