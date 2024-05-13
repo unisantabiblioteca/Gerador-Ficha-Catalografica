@@ -136,17 +136,6 @@ form {
   font-size: 12px;
   font-weight: bold;
 }
-form::after{
-  content: "";
-  display: block;
-  width: 2px;
-  height: 100%;
-  background-color: var(--cor-primaria);
-  position: absolute;
-  right: -20px;
-  border-radius: 4px;
-}
-
 .wrap-input {
   display: flex;
   flex-direction: column;
@@ -301,8 +290,11 @@ input {
   background-color: white;
 }
 .wrap-btn {
-  display: flex;
+  display: grid;
   position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 1rem;
 }
 
 .extra {
@@ -328,11 +320,9 @@ input {
 .btn {
   background-color: var(--cor-primaria);
   color: white;
-  margin-inline: auto;
-  margin-top: 1rem;
-  padding: 8px 16px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 14px;
   outline: none;
   cursor: pointer;
   border-color: var(--cor-primaria);
@@ -347,11 +337,9 @@ input {
 .btn-cancelar {
   background-color: white;
   color: black;
-  margin-inline: auto;
-  margin-top: 1rem;
-  padding: 8px 16px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 14px;
   outline: none;
   cursor: pointer;
   border-color: var(--cor-primaria);
@@ -372,13 +360,58 @@ input {
   background-color: var(--cor-primaria);
   cursor: default;
 }
+.mais:is([disabled]),.menos:is([disabled]){
+  opacity: .5;
+}
+.mais:is([disabled]):hover,.menos:is([disabled]):hover{
+  background-color: var(--cor-primaria);
+  cursor: default;
+}
+
 
 .btn-cancelar:is([disabled]):hover{
   opacity: 0.4;
   cursor: default;
 }
 
+.wrap-range{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  gap: 48px;
+  grid-column: 2;
+}
+.wrap-range button{
+  width: 32px;
+  font-size: 20px;
+  background-color: var(--cor-primaria);
+  color: white;
+  outline: none;
+  cursor: pointer;
+  z-index: 1;
+}
+.wrap-range button:hover{
+  background-color: var(--cor-primaria-hover);
+}
+.wrap-range .menos{
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.wrap-range .mais{
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
 
+.wrap-range div{
+  background-color: white;
+  padding: 4px 12px;
+  font-size: 14px;
+  height: 100%;
+  align-self: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  position: absolute;
+}
 
 /* ERRO */
 .erro {
@@ -392,7 +425,6 @@ input {
   left: 0;
   right: 0;
   margin-inline: auto;
-
 }
 .erro.ativo{
   opacity: 1;
@@ -418,10 +450,17 @@ input {
 }
 
 @media only screen and (max-width: 720px) {
-
+  .main{
+    margin-inline: 0;
+  }
+  h1.titulo{
+    margin-bottom: 0px;
+  }
   form{
     grid-template-columns: 1fr;
     align-items: center;
+    padding-inline: 0;
+    margin-top: 20px;
   }
   .coluna1-2{
     grid-column: 1;
@@ -457,6 +496,25 @@ input {
     font-size: 12px;
   }
   .wrap-ficha {
-    padding-top: 2rem;
+    align-items: center;
+    max-width: 100%;
+    transform: scale(.6);
+    margin-block: -50px
+  }
+  .wrap-btn{
+    transform: scale(1.5);
+    margin-top: 3rem;
+  }
+  header{
+    display: none;
+  }
+    .ajuda{
+    top:40px;
+    right: 40px;
+  }
+  .author{
+    bottom: -3rem;
+    text-align: center;
+    width: 400px;
   }
 }
