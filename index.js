@@ -29,9 +29,24 @@ const form = document.querySelector("form");
 const listaRomana = document.querySelectorAll(".listaRomana span");
 const numeroRomanos = ["I", "II", "III", "IV", "V", "VI"];
 
+const TamnhoFonte = document.querySelector(".wrap-range");
+const spanTamanhoFonte = document.querySelector(".tamanho-fonte");
+const btnFonteMenos = document.querySelector("button.menos");
+const btnFonteMais = document.querySelector("button.mais");
+
+TamnhoFonte.style.opacity = 0.5;
+
+let tamanhoFonte = 12;
+spanTamanhoFonte.textContent = tamanhoFonte;
+
+const conteudoFicha = document.querySelector(".ficha-info").children;
+
+
 //desabilita botoes para o usuario utilizar somente apos ter preenhido os campos do formulario
 btnGerarPDF.disabled = true;
 btnCancelar.disabled = true;
+btnFonteMais.disabled = true;
+btnFonteMenos.disabled = true;
 
 //////////////////Funções//////////////////
 
@@ -102,6 +117,10 @@ function gravarValores(e) {
 
     btnGerarPDF.disabled = false; //habilita botoes
     btnCancelar.disabled = false;
+    btnFonteMais.disabled = false;
+    btnFonteMenos.disabled = false;
+
+    TamnhoFonte.style.opacity = 1;
 
     cover.style.display = "none";
 
@@ -160,9 +179,6 @@ function registrarValoresHTML() {
     item.textContent = `${numeroRomanos[index]}. ${item.innerText}. `;
   });
 
-
-
-
   if (listaSobrenome[0].textContent !== "") {
     listaSobrenome.forEach((item) => {
       if (item.textContent !== "") {
@@ -182,7 +198,7 @@ function registrarValoresHTML() {
     } else {
       infos[2].innerText = `${infos[2].innerText}.`;
     }
-  }else{
+  } else {
     infos[2].innerText = `${infos[2].innerText}.`;
     infos[6].innerText = `${infos[6].innerText}.`;
   }
@@ -193,7 +209,6 @@ function gerarPDF() {
   if (!erro) {
     //seleciona o que vai virar pdf
     const conteudo = document.querySelector(".ficha");
-
     //configurações
     const options = {
       margin: [180, 10, 10, 10], // faz a informação ir para o final da pagina a4 do PDF, caso queira deixar no topo, alterar para: 10, 10, 10 ,10
@@ -245,6 +260,11 @@ function cancelar() {
   cover.style.display = "block";
   btnGerarPDF.disabled = true; //desabilita botoes
   btnCancelar.disabled = true;
+  btnFonteMais.disabled = true;
+  btnFonteMenos.disabled = true;
+  TamnhoFonte.style.opacity = 0.5;
+  let tamanhoFonte = 12;
+
   const divsCriadas = document.querySelectorAll(".criado");
   divsCriadas.forEach((div) => div.remove());
   inputs = document.querySelectorAll("[data-input]");
@@ -327,6 +347,23 @@ function eliminarInput() {
   }
 }
 
+
+function plusFontSize() {
+  if (tamanhoFonte < 14) tamanhoFonte++;
+  spanTamanhoFonte.textContent = tamanhoFonte;
+  conteudoFicha.forEach(
+    (item) => (item.style.fontSize = tamanhoFonte.toString() + "px"),
+  );
+}
+
+function minusFontSize() {
+  if (tamanhoFonte > 8) tamanhoFonte--;
+  spanTamanhoFonte.textContent = tamanhoFonte;
+  conteudoFicha.forEach(
+    (item) => (item.style.fontSize = tamanhoFonte.toString() + "px"),
+  );
+}
+
 //////////////////Event Listenres//////////////////
 
 btnEnviar.addEventListener("click", gravarValores);
@@ -336,3 +373,5 @@ tipoTrabalho.addEventListener("change", handleInputCurso);
 btnAdicionarAutor.addEventListener("click", criarInput);
 btnRemoverAutor.addEventListener("click", eliminarInput);
 window.addEventListener("resize", handleResize);
+btnFonteMais.addEventListener("click", plusFontSize);
+btnFonteMenos.addEventListener("click", minusFontSize);
