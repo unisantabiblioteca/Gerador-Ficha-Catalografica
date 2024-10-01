@@ -375,3 +375,13 @@ btnRemoverAutor.addEventListener("click", eliminarInput);
 window.addEventListener("resize", handleResize);
 btnFonteMais.addEventListener("click", plusFontSize);
 btnFonteMenos.addEventListener("click", minusFontSize);
+
+
+
+///Menu
+
+function menuOnClick() {
+  document.getElementById("menu-bar").classList.toggle("change");
+  document.getElementById("nav").classList.toggle("change");
+  document.getElementById("menu-bg").classList.toggle("change-bg");
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>Gerador de Fichas Catalográficas - Guia de Utilização</title>
+    <meta name="description" content="Formulario para criação de fichas catalograficas da Universidade Santa Cecilia" />
+  </head>
+
+  <body>
+    <div class="app guia">
+      <!-- Inicio APP -->
+      <header>
+        <img src="imagens/logoUnisanta 1.svg" alt="Logotipo da Universidade Santa Cecilia" />
+        <img src="imagens/logoSIBI 1.svg" alt="Logotipo do sistema integrado de bibliotecas Unisanta" />
+      </header>
+
+      <div class="main">
+        <div id="menu">
+          <div id="menu-bar" onclick="menuOnClick()">
+            <div id="bar1" class="bar"></div>
+            <div id="bar2" class="bar"></div>
+            <div id="bar3" class="bar"></div>
+          </div>
+          <nav class="nav" id="nav">
+            <ul>
+              <li>
+                <a target="_blank" href="https://biblioteca.unisanta.br/OrientacaoBibliografica">Site Biblioteca</a>
+              </li>
+              <li><a href="index.html">Gerador de Ficha</a></li>
+              <li><a href="guia.html">Guia de Utilização</a></li>
+              <li><a href="contatos.html">Contatos</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="menu-bg" id="menu-bg"></div>
+        <h1 class="titulo">Guia de Utilização</h1>
+        <span
+          data-tooltip="Em caso de problema na elaboração da ficha entrem em contato, via e-mail biblioteca.digital@unisanta.br ou via whatszapp +55 13 99642-2306"
+          class="ajuda"
+          >?</span
+        >
+
+        <section class="infos-guia-wrap">
+          <p>Utilize as regras da Língua Portuguesa, por exemplo, não escreva frases ou nomes com letras maiúsculas.</p>
+          <p>
+            Os nomes e sobrenomes do autor(res) devem ser inseridos em seus respectivos campos não é necessário
+            “inverter” estas informações, ou seja não insira o sobrenome no campo nome ou o nome no campo sobrenome, o
+            gerador inverte estes dados automaticamente.
+          </p>
+          <img src="imagens/guia_Imagem1.png" alt="" />
+          <img src="imagens/guia_Imagem2.png" alt="" />
+          <p>
+            <strong class="strong_red">ATENÇÃO: </strong>A classificação Decimal de Dewey (CDD) e a notação do autor
+            (PHA) devem ser solicitadas aos bibliotecários através dos e-mails
+            <a href="mailto:amrs@unisanta.br">amrs@unisanta.br</a> e/ou
+            <a href="mailto:rafaelmicco@unisanta.br">rafaelmicco@unisanta.br</a>
+          </p>
+          <img src="imagens/guia_Imagem3.png" alt="" />
+          <p>Após o preenchimento dos campos, clique em “Visualizar”</p>
+          <img src="imagens/guia_Imagem4.png" alt="" />
+          <p>Se os dados estiverem corretos, clique em “Gerar PDF”.</p>
+          <img src="imagens/guia_Imagem5.png" alt="" />
+          <p>
+            A ficha catalográfica deve ser inserida no verso (ou na folha seguinte) da folha de rosto de seu trabalho.
+          </p>
+        </section>
+      </div>
+
+      <a href="https://gabrielbragion.github.io/Portfolio/" target="_blank" class="author"
+        >Desenvolvido por Gabriel Bragion de Micco</a
+      >
+    </div>
+    <!-- fim da APP -->
+
+    <script src="index.js"></script>
+    <!-- Codigo que pega os valores do formulario e cria o item que se tornara o PDF -->
+  </body>
+</html>
