@@ -154,8 +154,8 @@ header{
   width: 280px;
   height: 100%;
   transform: translate(-20px,-30px);
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 .main{
   display: grid;
