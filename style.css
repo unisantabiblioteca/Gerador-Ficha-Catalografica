@@ -55,6 +55,9 @@ a{
   padding-inline: 1rem;
   position: relative;
 }
+.app.guia{
+  transform: translateX(8px);
+}
 header{
   display: flex;
   justify-content: space-between;
