@@ -211,7 +211,7 @@ function gerarPDF() {
     const conteudo = document.querySelector(".ficha");
     //configurações
     const options = {
-      margin: [180, 10, 15, 10], // faz a informação ir para o final da pagina a4 do PDF, caso queira deixar no topo, alterar para: 10, 10, 10 ,10
+      margin: [180, 10, 25, 10], // faz a informação ir para o final da pagina a4 do PDF, caso queira deixar no topo, alterar para: 10, 10, 10 ,10
       filename: "ficha catalográfica.pdf",
       html2canvas: { scale: 3 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
